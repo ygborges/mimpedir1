@@ -28,7 +28,7 @@ class TelaHome extends StatelessWidget{
                   ],
                 ),
                 SizedBox(width: 10),
-                ElevatedButton(onPressed: (){}, child: Text("Excluir")),
+                ElevatedButton(onPressed: (){}, child: Text("Editar")),
                 SizedBox(width: 10),
                 ElevatedButton(onPressed: (){}, child: Text("Excluir")),
               ],
