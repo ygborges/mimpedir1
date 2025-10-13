@@ -10,6 +10,7 @@ class EditRestaurante extends StatelessWidget{
       body: Padding(padding: const EdgeInsets.all(30),
       child: Column(
 
+
       ),
      ),
     );

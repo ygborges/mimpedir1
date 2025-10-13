@@ -15,8 +15,8 @@ class TelaHome extends StatefulWidget {
 
   @override
   void initState(){
-
-
+      super.initState();
+      carregarRestaurante();
   }
 
   Future<void>carregarRestaurante() async{
@@ -31,8 +31,17 @@ class TelaHome extends StatefulWidget {
     return Scaffold(
       appBar: AppBar(title: const Text('Lista de Restaurante'),
       actions: [
-        IconButton(onPressed: (){Navigator.push(context,
-            MaterialPageRoute(builder: (context) => TelaCadRestaurante()));
+        IconButton(onPressed: (){
+          final t = Navigator.push(context,
+            MaterialPageRoute(builder: (context) => TelaCadRestaurante())
+          );
+
+          if(t == true || t == null){
+            setState(() {
+              carregarRestaurante();
+            });
+          }
+
             },
             icon: Icon(Icons.add))
         ],
