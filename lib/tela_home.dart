@@ -59,11 +59,38 @@ class TelaHome extends StatefulWidget {
                 trailing: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    IconButton(onPressed: (){
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => EditRestaurante()));
-                    }, icon: Icon(Icons.edit, color: Colors.black,)),
-                    IconButton(onPressed: (){}, icon: Icon(Icons.delete, color: Colors.redAccent,)),
+                    IconButton(
+                        icon: Icon(Icons.edit, color: Colors.blue,),
+                      onPressed: () async {
+                          EditRestaurante.restaurante = await RestauranteDAO.listar(r.cd_rest);
+                          Navigator.push(context, MaterialPageRoute(builder: builder))
+                      },
+                    ),
+                    IconButton(
+                        icon: Icon(Icons.delete, color: Colors.redAccent,),
+                        onPressed: () {
+                          showDialog(
+                              context:context,
+                              builder: (BuildContext context) => AlertDialog(
+                                title: Text('ATENÇÃO'),
+                                content: Text('Confirmar exclusão?'),
+                                actions: [
+                                  TextButton(onPressed: (){
+                                    Navigator.pop(context);
+                                  },child: Text('cancelar')),
+                                  TextButton(onPressed: (){
+                                    RestauranteDAO.excluir(r);
+                                    setState(() {
+                                      carregarRestaurante();
+                                    });
+                                    Navigator.pop(context);
+                                  }, child: Text('sim'))
+                                ],
+                              )
+                          );
+              } ,
+            ),
+
                   ],
                 ),
               ),

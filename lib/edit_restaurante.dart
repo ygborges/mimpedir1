@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:mimpedir/restaurante.dart';
 
 class EditRestaurante extends StatelessWidget{
-  EditRestaurante ({super.key});
+  static Restaurante restaurante = Restaurante();
 
   @override
   Widget build(BuildContext context) {
